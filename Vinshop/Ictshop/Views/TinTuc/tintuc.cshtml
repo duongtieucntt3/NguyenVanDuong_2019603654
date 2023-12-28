@@ -1,0 +1,28 @@
+﻿@using Ictshop.Models;
+@model IEnumerable<TinTuc>
+
+@{
+    ViewBag.Title = "tintuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" bg-danger"><h2 style="padding-left:20px">Tin tức</h2></div>
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <a href="@Url.Action("xemchitiet", new {@maTinTuc=item.maTinTuc })">
+                <img src=@Url.Content("~" +item.anh.ToString()) class="img-responsive" alt="" width="400" height="400" />
+            </a>            
+            <center>
+                <h3> @item.tieuDe</h3>
+            </center>
+            <h5>@item.ngayphatHanh</h5>
+        </div>
+    }
+</div>
+<br />
+<br />
+

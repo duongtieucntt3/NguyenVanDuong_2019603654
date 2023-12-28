@@ -1,0 +1,139 @@
+﻿@model Ictshop.Models.Sanpham
+
+@{ ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<h2>Thông tin chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hangsanxuat.Tenhang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsanxuat.Tenhang)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiPhuKien.tenLinhKien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiPhuKien.tenLinhKien)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hedieuhanh.Tenhdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hedieuhanh.Tenhdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tensp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giatien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien) VND
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giamoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giamoi) VND
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaoHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaoHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bonhotrong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bonhotrong) GB
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram) GB
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Screen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Screen) INCH
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanphammoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanphammoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anhbia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anhbia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(x => x.Mota, new { @class = "form-control", @id = "txtDetail", @readonly = "readonly" })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-success">
+        @Html.ActionLink("Sửa sản phẩm", "Edit", new { id = Model.Masp }, new { @style = "color:white;" })
+    </button>
+</p>
+@section  scripts{
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDetail', {
+                customConfig: '/content/b/ckeditor/config.js',
+                extraAllowedContent: 'span',
+            });
+        });
+
+    </script>
+}

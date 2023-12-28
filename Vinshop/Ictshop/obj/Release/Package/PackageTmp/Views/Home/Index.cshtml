@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "ICT SHOP";
+    
+}
+
+
+<br />
+<div class="row">
+    <div class="col-md-8">
+       @Html.Action("SlidePartial","Home")
+    </div>
+    <div class="col-md-4">
+        <img src="~/HinhanhSP/quangcao5.jpg" class="img-responsive" alt="" height="300" width="250" />
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<div>
+    <font><marquee direction="left" style="background:orange">ICTshop- Laptop và phụ kiện chất lượng giá cả hợp lý</marquee></font>
+</div>
+<div>
+    <img class="img-responsive" src="~/HinhanhSP/ban4.jpg" />
+</div>
+<br />
+<div class="spnoibat">
+    <div class="row">
+
+        <h3> TIN NỔI BẬT</h3>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/quangcao1.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/quangcao3.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/quangcao4.png" class="img-responsive" alt="" />
+        </div>
+    </div>
+</div>
+<div class="danhmuc">
+    @Html.Action("DanhmucPartial", "Danhmuc")
+    @Html.Action("PhuKienPartial", "Danhmuc")
+</div>
+<div class="dt">
+
+    @Html.Action("sanphammoi", "Sanpham")
+</div>
+
+<div class="dt">
+
+    @Html.Action("TinTucpartial", "TinTuc")
+</div>
+

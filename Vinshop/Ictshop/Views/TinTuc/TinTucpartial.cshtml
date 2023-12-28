@@ -1,0 +1,30 @@
+﻿@using Ictshop.Models;
+@model List<TinTuc>
+<div class="row">
+    <div class=" bg-danger"><h3 style="padding-left:20px"> Tin mới nhất </h3></div>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6">
+            <a href="@Url.Action("xemchitiet", new {@maTinTuc=item.maTinTuc })">
+                <img src=@Url.Content("~" +item.anh.ToString()) class="img-responsive" alt="" width="400" height="400" />
+            </a>
+            <center>
+                <h3> @item.tieuDe</h3>
+            </center>
+            <h5>@item.ngayphatHanh</h5>
+        </div>
+    }
+
+
+    @*<div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <img src="~/HinhanhSP/ip3.jpg" class="img-responsive" alt="" />
+        </div>*@
+</div>
+
+

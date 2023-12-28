@@ -1,0 +1,20 @@
+﻿@using Ictshop.Models;
+@model IEnumerable<Sanpham>
+
+
+<br />
+<div class="navbar-collapse collapse">
+    <h3> DANH MỤC HÃNG LAPTOP</h3>
+    <nav>
+        <ul class="nav navbar-nav">
+            @foreach (var item in Model.GroupBy(n => n.Hangsanxuat))
+            {
+                if (item.Key != null)
+                {
+                    <li><a href="@Url.Action("sanpham", "Sanpham", new {@MaHang = item.Key.Mahang})">@item.Key.Tenhang</a></li>
+                }
+            }
+        </ul>
+    </nav>
+
+</div>

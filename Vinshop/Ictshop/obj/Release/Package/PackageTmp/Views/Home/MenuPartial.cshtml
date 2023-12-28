@@ -1,0 +1,62 @@
+﻿
+@using Ictshop.Models;
+@model IEnumerable<Sanpham>
+
+<div class="navbar-collapse collapse">
+    <nav>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="/Home/LapTop" title="LAPTOP">
+                    @*<span><i class="fas fa-tablet"></i></span>*@
+                    <span>LAPTOP</span>
+                </a>
+                <ul>
+                    @foreach (var item in Model.GroupBy(n => n.Hangsanxuat))
+                    {
+                        if (item.Key != null)
+                        {
+                            <li><a href="@Url.Action("sanpham", "Sanpham", new {@MaHang = item.Key.Mahang})">@item.Key.Tenhang</a></li>
+                        }
+                    }
+
+
+                </ul>
+            </li>
+            <li>
+                <a href="/Home/PhuKien" title="PHUKIEN">
+                    @*<span><i class="fas fa-desktop"></i></span>*@
+                    <span>PHỤ KIỆN</span>
+                </a>
+                <ul>
+                    @foreach (var item in Model.GroupBy(n => n.LoaiPhuKien))
+                    {
+                        if (item.Key != null)
+                        {
+                            <li><a href="@Url.Action("LinhKien", "Sanpham", new {@MaLinhKien = item.Key.maLinhKien})">@item.Key.tenLinhKien</a></li>
+                        }
+                    }
+
+
+                </ul>
+            </li>
+            <li>
+                <a href="@Url.Action("tintuc", "TinTuc")" title="TINTUC">
+                    @*<span><i class="fas fa-headphones"></i></span>*@
+                    <span>TIN TỨC</span>
+
+                </a>
+            </li>
+            <li>
+                <a href="/Home/Contact" title="LIENHE">
+                    @*<span><i class="fas fa-headphones"></i></span>*@
+                    <span>LIÊN HỆ</span>
+
+                </a>
+            </li>
+            <li>
+                <a style="color:white" class="nav-link" href="@Url.Action("Index", "DonHangs")">ĐƠN HÀNG</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>

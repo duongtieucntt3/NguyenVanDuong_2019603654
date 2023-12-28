@@ -1,0 +1,66 @@
+﻿@using Ictshop.Models
+@model Sanpham
+
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+<br />
+
+<CENTER>
+    <div>
+        <h2>CHI TIẾT SẢN PHẨM</h2>
+        <img src="@Url.Content("~" +@Model.Anhbia)"  />
+        @{
+            if (@Model.Sanphammoi == true)
+            {
+                <span class="sticker">New</span>
+            }
+
+        }
+        <br />
+        <h3> @Model.Tensp</h3>
+        <h3 style="color:red">Giá ưu đãi: @String.Format("{0:0,0}", @Model.Giamoi) VND</h3>
+        <strike><h5 style="color:darkgray">Giá gốc: @String.Format("{0:0,0}", @Model.Giatien) VND</h5></strike>
+        <h4>Bảo hành: &nbsp; @Model.BaoHanh</h4>        
+        @{
+            if (@Model.Bonhotrong != null)
+            {
+                <h4>Bộ nhớ trong: &nbsp; @String.Format("{0:0,0}", @Model.Bonhotrong) GB</h4>
+            }
+            if (@Model.Ram != null)
+            {
+                <h4>Ram: &nbsp; @String.Format("{0:0,0}", @Model.Ram) GB</h4>
+            }
+            if (@Model.Screen != null)
+            {
+                <h4>Screen: &nbsp; @String.Format("{0:0,0}", @Model.Screen) inch</h4>
+            }
+            if (@Model.Mahdh != null)
+            {
+                <h4>Hệ điều hành: &nbsp; @Model.Hedieuhanh.Tenhdh</h4>
+            }
+
+        }
+
+        <br />
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = Model.Masp, @strURL = Request.Url.ToString() }))
+        {
+            <input type="submit" value="Mua hàng" id="bgnGioHang" class="btn btn-success" />
+
+        }
+
+    </div>
+</CENTER>
+@{
+    if (@Model.Mota != null)
+    {
+        <div>
+            <h3> Mô tả:</h3>
+            @Html.Raw(Model.Mota)
+        </div>
+    }
+}
+

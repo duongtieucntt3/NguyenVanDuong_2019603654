@@ -1,0 +1,20 @@
+﻿@using Ictshop.Models
+@model TinTuc
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/main_styles.css">
+<br />
+<CENTER>
+    <div>
+        <h2> @Model.tieuDe</h2>
+        <h4>@Model.ngayphatHanh</h4>
+        <br />
+    </div>
+</CENTER>
+<div>
+    @Html.Raw(Model.noiDung)
+</div>

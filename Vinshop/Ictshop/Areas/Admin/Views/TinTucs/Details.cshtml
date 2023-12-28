@@ -1,0 +1,64 @@
+﻿@model Ictshop.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết tin tức</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayphatHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayphatHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.noiDung)
+        </dt>
+
+        <dd>
+            @Html.TextAreaFor(x => x.noiDung, new { @class = "form-control", @id = "txtDetail", @readonly = "readonly" })
+        </dd>
+    </dl>
+</div>
+<p>
+    <button class="btn btn-success">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.maTinTuc }, new { @style = "color:white;" })
+    </button>
+    <button class="btn btn-danger">
+        @Html.ActionLink("Xóa", "Delete", new { id = Model.maTinTuc }, new { @style = "color:white;" })
+    </button>
+</p>
+@section  scripts{
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('txtDetail', {
+                customConfig: '/content/b/ckeditor/config.js',
+                extraAllowedContent: 'span',
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "ThongKeDoanhThu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<center>
+    <h2 style="color:red">Thống kê doanh thu</h2>
+    <br />
+    <div class="col-md-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ngày</th>
+                    <th>Doanh thu</th>
+                </tr>
+            </thead>
+            <tbody id="load_data"></tbody>
+        </table>
+    </div>
+</center>
+
+@section scripts{
+    <script src="~/Areas/Assets/dist/js/moment.min.js"></script>
+    <script>
+        $(function () {
+            /* ChartJS
+             * -------
+             * Here we will create a few charts using ChartJS
+             */
+
+            var arrDoanhThu = [];
+            var arrDate = [];
+            $.ajax({
+                url: '/Thongkes/DoanhThu',
+                type: 'GET',
+                data: { fromDate: '', toDate: '' },
+                success: function (rs) {
+
+                    $.each(rs.Data, function (i, item) {
+                        var strDate = moment(item.Date).format('DD/MM/yyyy');
+                        arrDate.push(strDate);
+                        arrDoanhThu.push(item.DoanhThu);
+                    });
+                    load_data(rs.Data);
+                }
+            });
+
+
+        })
+
+        function load_data(data) {
+            var strHtml = "";
+            $.each(data, function (i, item) {
+                var strDate = moment(item.Date).format('DD/MM/yyyy');
+                strHtml += "<tr>";
+                strHtml += "<td>" + (i + 1) + "</td>";
+                strHtml += "<td>" + strDate + "</td>";
+                strHtml += "<td>" + item.DoanhThu + "</td>";
+                strHtml += "</tr>";
+            });
+            $('#load_data').html(strHtml);
+        }
+    </script>
+}
+
+
